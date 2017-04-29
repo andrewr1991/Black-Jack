@@ -1,14 +1,18 @@
+//Player class to create object that represents the
+
 #ifndef PLAYER_H
 #define PLAYER_H 2017
 #include "card.h"
 #include <vector>
 
+using namespace std;
+
 class Player {
   private:
-    std::vector<Card> hand;
+    vector<Card> playerHand;
 
-  //public:
-
-
+  public:
+    void hit(Card card);
+    int getScore();
 };
 #endif

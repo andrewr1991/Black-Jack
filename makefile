@@ -18,6 +18,8 @@ dealer.o: dealer.cpp dealer.h card.h
 		$(CXX) $(CXXFLAGS) -c dealer.cpp
 player.o: player.cpp player.h dealer.h
 		$(CXX) $(CXXFLAGS) -c player.cpp
+view.o: view.cpp view.h
+		$(CXX) $(CXXFLAGS) -c view.cpp
 
 clean:
 	-rm -f *.o *~ a.out

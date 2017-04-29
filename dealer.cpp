@@ -6,21 +6,14 @@ void Dealer::createDeck() {
   int counter = 0;
   vector<string> suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
   for (int i = 0; i < 4; i++) {
-    for (int k = 0; k < 52; k++) {
+    for (int k = 0; k < 13; k++) {
       Card card(k, suits[i]);
-      deck[counter] = card;
-      counter++;
+      deck.push_back(card);
     }
   }
 }
 
-void Dealer::shuffle() {
+Card Dealer::hit() {
   srand(time(NULL));
-
-  for (int i = 0; i < 1000; i++) {
-    int a = rand() % 52 + 1;
-    int b = rand() % 52 + 1;
-
-    iter_swap(shuffledDeck.begin() + a, shuffledDeck.begin() + b);
-  }
+  return deck[rand() % deck.size()];
 }

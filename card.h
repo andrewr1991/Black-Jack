@@ -4,13 +4,18 @@
 #define CARD_H 2017
 #include <string>
 
+using namespace std;
+
 class Card {
   private:
     int rank;
-    std::string suit;
-
+    string suit;
+    //Suits suit;
   public:
-    Card (int _rank, std::string _suit) : rank{_rank}, suit{_suit} {}
+    Card (int _rank, string _suit) : rank{_rank}, suit{_suit} {}
+    //enum Suits {diamond, heart, club, spade};
+    //string suitToString(suits s);
     int getRank();
+    //string[] suit_to_string = {"Spade"}; suit_to_string[s]
 };
 #endif

@@ -10,10 +10,10 @@ using namespace std;
 class Dealer {
   private:
     vector<Card> deck;
-    vector<Card> shuffledDeck;
+    vector<Card> dealerHand;
 
   public:
     void createDeck();
-    void shuffle();
+    Card hit();
 };
 #endif
