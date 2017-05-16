@@ -12,6 +12,7 @@ class Player {
     vector<Card> playerHand;
 
   public:
+    void initializeHand(Card card);
     void hit(Card card);
     int getScore();
 };

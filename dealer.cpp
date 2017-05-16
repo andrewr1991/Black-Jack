@@ -3,14 +3,16 @@
 using namespace std;
 
 void Dealer::createDeck() {
-  int counter = 0;
-  vector<string> suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
   for (int i = 0; i < 4; i++) {
     for (int k = 0; k < 13; k++) {
-      Card card(k, suits[i]);
+      Card card(k, Card::Suits(i));
       deck.push_back(card);
     }
   }
+}
+
+Card Dealer::deal() {
+
 }
 
 Card Dealer::hit() {

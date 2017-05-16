@@ -14,6 +14,7 @@ class Dealer {
 
   public:
     void createDeck();
+    Card deal();
     Card hit();
 };
 #endif

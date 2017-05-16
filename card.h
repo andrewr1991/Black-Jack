@@ -7,15 +7,14 @@
 using namespace std;
 
 class Card {
+  public:
+    enum Suits {diamond, heart, club, spade};
+    Card (int _rank, Suits _suit) : rank{_rank}, suit{_suit} {}
+    string suitToString();
+    int getRank();
+
   private:
     int rank;
-    string suit;
-    //Suits suit;
-  public:
-    Card (int _rank, string _suit) : rank{_rank}, suit{_suit} {}
-    //enum Suits {diamond, heart, club, spade};
-    //string suitToString(suits s);
-    int getRank();
-    //string[] suit_to_string = {"Spade"}; suit_to_string[s]
+    Suits suit;
 };
 #endif
