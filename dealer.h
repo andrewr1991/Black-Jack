@@ -1,5 +1,6 @@
 #ifndef DEALER_H
 #define DEALER_H 2017
+#include <iostream>
 #include <string>
 #include <vector>
 #include <cstdlib>
@@ -14,6 +15,7 @@ class Dealer {
 
   public:
     void createDeck();
+    void shuffleDeck();
     Card deal();
     Card hit();
 };

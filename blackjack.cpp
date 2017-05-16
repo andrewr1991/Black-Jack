@@ -5,5 +5,8 @@
 #include "player.h"
 
 int main() {
+  Dealer dealer;
+  dealer.createDeck();
+  dealer.shuffleDeck();
   return 0;
 }

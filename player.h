@@ -1,4 +1,4 @@
-//Player class to create object that represents the
+//Player class to create object that represents a human player
 
 #ifndef PLAYER_H
 #define PLAYER_H 2017
