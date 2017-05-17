@@ -16,7 +16,6 @@ class Dealer {
   public:
     void createDeck();
     void shuffleDeck();
-    Card deal();
     Card hit();
 };
 #endif
