@@ -3,10 +3,12 @@
 #include "card.h"
 #include "dealer.h"
 #include "player.h"
+#include "controller.h"
 
 int main() {
-  Dealer dealer;
-  dealer.createDeck();
-  dealer.shuffleDeck();
+  Controller controller(Dealer dealer);
+  while (true) {
+
+  }
   return 0;
 }
