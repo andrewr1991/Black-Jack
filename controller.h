@@ -2,6 +2,7 @@
 #define CONTROLLER_H 2017
 #include "card.h"
 #include "dealer.h"
+#include "player.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ public:
 
 private:
   Dealer dealer;
+  Player player;
 };
 
 #endif

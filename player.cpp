@@ -1,7 +1,7 @@
 #include "player.h"
 
 void Player::initializeHand(Card card) {
-  playerHand.push_back(card);
+		playerHand.push_back(card);
 }
 
 void Player::hit(Card card) {

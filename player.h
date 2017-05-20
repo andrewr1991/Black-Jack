@@ -2,8 +2,8 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H 2017
-#include "card.h"
 #include <vector>
+#include "card.h"
 
 using namespace std;
 
