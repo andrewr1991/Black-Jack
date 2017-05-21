@@ -8,7 +8,7 @@ using namespace std;
 
 class Controller {
 public:
-  Card deal();
+  void deal();
 
 private:
   Dealer dealer;

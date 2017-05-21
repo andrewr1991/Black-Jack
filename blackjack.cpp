@@ -10,7 +10,7 @@ int main() {
 	int selection;
 	cout << view.menu_toString();
 	cin >> selection;
-	
+
 	if (selection == 1) {
 		Controller controller(Dealer dealer, Player player);
 		while (true) {

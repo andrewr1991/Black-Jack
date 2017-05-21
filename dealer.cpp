@@ -23,6 +23,12 @@ void Dealer::shuffleDeck() {
 }
 
 // Simply returns one of the shuffled cards
-Card Dealer::hit() {
-  return deck.back();
+Card Dealer::hitPlayer() {
+  Card temp = deck.back();
+  deck.erase(deck.end());
+  return temp;
+}
+
+void Dealer::hitDealer() {
+
 }
