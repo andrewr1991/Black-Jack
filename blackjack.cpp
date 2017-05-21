@@ -7,14 +7,19 @@
 
 int main() {
 	View view;
-	int selection;
+	int selection, hitOrStay_selection;
 	cout << view.menu_toString();
 	cin >> selection;
 
 	if (selection == 1) {
-		Controller controller(Dealer dealer, Player player);
+		Controller controller;
+		controller.createDealer();
+		controller.createPlayer();
+		controller.deal();
 		while (true) {
-
+			cout << controller.playerDeck_toString();
+			cout << view.hitOrStay_toString();
+			cin >> hitOrStay_selection;
 		}
 	}
 	else {

@@ -18,7 +18,7 @@ dealer.o: dealer.cpp dealer.h card.h
 		$(CXX) $(CXXFLAGS) -c dealer.cpp
 player.o: player.cpp player.h card.h
 		$(CXX) $(CXXFLAGS) -c player.cpp
-controller.o: controller.cpp controller.h card.h dealer.h
+controller.o: controller.cpp controller.h card.h dealer.h player.h
 		$(CXX) $(CXXFLAGS) -c controller.cpp		
 view.o: view.cpp view.h
 		$(CXX) $(CXXFLAGS) -c view.cpp

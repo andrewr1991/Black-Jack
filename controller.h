@@ -7,12 +7,17 @@
 using namespace std;
 
 class Controller {
-public:
-  void deal();
-
-private:
-  Dealer dealer;
-  Player player;
+	public:
+		void createDealer();
+		void createPlayer();
+		void deal();
+		void showPlayerDeck();
+		void showDealerDeck();
+		string playerDeck_toString();
+		
+	private:
+		Dealer dealer;
+		Player player;
 };
 
 #endif

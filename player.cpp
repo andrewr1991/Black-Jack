@@ -15,3 +15,12 @@ int Player::getScore() {
   }
   return score;
 }
+
+string Player::playerDeck() {
+	string playerCards = "Player hand\n";
+	for (int i = 0; i < playerHand.size(); i++) {
+		playerCards += to_string(playerHand[i].getRank()) + " ";
+	}
+	playerCards += "\n\n";
+	return playerCards;
+}

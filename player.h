@@ -15,5 +15,6 @@ class Player {
     void initializeHand(Card card);
     void hit(Card card);
     int getScore();
+    string playerDeck();
 };
 #endif
