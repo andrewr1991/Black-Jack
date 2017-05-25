@@ -14,6 +14,8 @@ class Controller {
 		void showPlayerDeck();
 		void showDealerDeck();
 		string playerDeck_toString();
+		void hitPlayer();
+		void playDealer();
 		
 	private:
 		Dealer dealer;

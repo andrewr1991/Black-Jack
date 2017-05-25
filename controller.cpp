@@ -21,4 +21,8 @@ void Controller::createPlayer() {
 string Controller::playerDeck_toString() {
 	return player.playerDeck();
 }
+
+void Controller::hitPlayer() {
+	player.hit(dealer.hitPlayer());
+}
 	

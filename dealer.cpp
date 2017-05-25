@@ -6,8 +6,16 @@ using namespace std;
 void Dealer::createDeck() {
   for (int i = 0; i < 4; i++) {
     for (int k = 0; k < 13; k++) {
-      Card card(k, Card::Suits(i));
-      deck.push_back(card);
+		if (k > 10) {
+			Card card(10, Card::Suits(i));
+		}
+		else if (k == 0) {
+			Card card(1, Card::Suits(i));
+		}
+		else {
+		  Card card(k, Card::Suits(i));
+		  deck.push_back(card);
+	  }
     }
   }
 }

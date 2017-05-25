@@ -20,6 +20,13 @@ int main() {
 			cout << controller.playerDeck_toString();
 			cout << view.hitOrStay_toString();
 			cin >> hitOrStay_selection;
+			
+			if (hitOrStay_selection == 1) {
+				controller.hitPlayer();
+			}
+			else {
+				break;
+			}
 		}
 	}
 	else {
