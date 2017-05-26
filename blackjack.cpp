@@ -2,7 +2,6 @@
 #include <string>
 #include "dealer.h"
 #include "player.h"
-#include "controller.h"
 #include "view.h"
 
 int main() {
@@ -12,17 +11,18 @@ int main() {
 	cin >> selection;
 
 	if (selection == 1) {
-		Controller controller;
-		controller.createDealer();
-		controller.createPlayer();
-		controller.deal();
+		Dealer dealer;
+		dealer.createPlayer();
+		dealer.createDeck();
+		dealer.shuffleDeck();
+		dealer.deal();
 		while (true) {
-			cout << controller.playerDeck_toString();
+			cout << dealer.playerDeck_toString();
 			cout << view.hitOrStay_toString();
 			cin >> hitOrStay_selection;
-			
+
 			if (hitOrStay_selection == 1) {
-				controller.hitPlayer();
+				dealer.hitPlayer();
 			}
 			else {
 				break;

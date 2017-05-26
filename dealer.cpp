@@ -30,13 +30,35 @@ void Dealer::shuffleDeck() {
   }
 }
 
+void Dealer::deal() {
+  for (int i = 0; i < 2; i++) {
+    // Hit dealer
+    dealerHand.push_back(deck.back());
+    deck.pop_back();
+
+    // Hit player
+    Card temp = deck.back();
+    deck.pop_back();
+    player.hit(temp);
+  }
+}
+
 // Simply returns one of the shuffled cards
-Card Dealer::hitPlayer() {
+void Dealer::hitPlayer() {
   Card temp = deck.back();
-  deck.erase(deck.end());
-  return temp;
+  deck.pop_back();
+  player.hit(temp);
 }
 
 void Dealer::hitDealer() {
+  dealerHand.push_back(deck.back());
+  deck.pop_back();
+}
 
+void Dealer::createPlayer() {
+  Player _player = player;
+}
+
+string Dealer::playerDeck_toString() {
+  return player.playerDeck();
 }

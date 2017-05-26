@@ -5,18 +5,23 @@
 #include <vector>
 #include <cstdlib>
 #include "card.h"
+#include "player.h"
 
 using namespace std;
 
 class Dealer {
-  private:
-    vector<Card> deck;
-    vector<Card> dealerHand;
-
   public:
     void createDeck();
     void shuffleDeck();
-    Card hitPlayer();
+    void hitPlayer();
     void hitDealer();
+    void createPlayer();
+    void deal();
+    string playerDeck_toString();
+
+  private:
+    Player player;
+    vector<Card> deck;
+    vector<Card> dealerHand;
 };
 #endif
