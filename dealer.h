@@ -17,6 +17,7 @@ class Dealer {
     void hitDealer();
     void createPlayer();
     void deal();
+    int dealerPlay();
     string playerDeck_toString();
 
   private:

@@ -30,31 +30,28 @@ void Dealer::shuffleDeck() {
   }
 }
 
+// Deal each the dealer and player two cards
 void Dealer::deal() {
   for (int i = 0; i < 2; i++) {
-    // Hit dealer
-    dealerHand.push_back(deck.back());
-    deck.pop_back();
-
-    // Hit player
-    Card temp = deck.back();
-    deck.pop_back();
-    player.hit(temp);
+    hitDealer();
+	hitPlayer();
   }
 }
 
-// Simply returns one of the shuffled cards
+// Pushes a card from the back of the shuffled deck into the player's hand then deletes that same card from the main deck 
 void Dealer::hitPlayer() {
   Card temp = deck.back();
   deck.pop_back();
   player.hit(temp);
 }
 
+// Pushes a card from the back of the shuffled deck into the dealer's hand then deletes that same card from the main deck
 void Dealer::hitDealer() {
   dealerHand.push_back(deck.back());
   deck.pop_back();
 }
 
+// Creates a Player object
 void Dealer::createPlayer() {
   Player _player = player;
 }
@@ -62,3 +59,23 @@ void Dealer::createPlayer() {
 string Dealer::playerDeck_toString() {
   return player.playerDeck();
 }
+
+// Returns the player's total score
+int playerScore() {
+	return player.getScore();
+}
+
+int dealerScore() {
+  int score = 0;
+  for (int i = 0; i < playerHand.size(); i++) {
+    score += dealerHand[i].getRank();
+  }
+
+int Dealer::dealerPlay() {
+	
+	
+	
+	
+	
+	
+	
