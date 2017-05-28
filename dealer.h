@@ -19,9 +19,11 @@ class Dealer {
     void deal();
     int dealerPlay();
     int dealerScore();
-    string playerScore();
+    int playerScore();
     string playerDeck_toString();
+    string playerScore_toString();
     string dealerDeck_toString();
+    string dealerScore_toString();
 
   private:
     Player player;

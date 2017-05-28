@@ -7,30 +7,42 @@
 int main() {
 	View view;
 	int selection, hitOrStay_selection;
+	string playAgain;
 	cout << view.menu_toString();
 	cin >> selection;
 
 	if (selection == 1) {
-		Dealer dealer;
-		dealer.createPlayer();
-		dealer.createDeck();
-		dealer.shuffleDeck();
-		dealer.deal();
-		while (true) {
-			cout << dealer.playerDeck_toString() << dealer.playerScore();
-			
-			cout << view.hitOrStay_toString();
-			cin >> hitOrStay_selection;
+			while(true) {
+			Dealer dealer;
+			dealer.createPlayer();
+			dealer.createDeck();
+			dealer.shuffleDeck();
+			dealer.deal();
+			while (true) {
+				cout << dealer.playerDeck_toString() << dealer.playerScore_toString();
+				if (dealer.playerScore() < 21) {
+					cout << view.hitOrStay_toString();
+					cin >> hitOrStay_selection;
 
-			if (hitOrStay_selection == 1) {
-				dealer.hitPlayer();
+					if (hitOrStay_selection == 1) {
+						dealer.hitPlayer();
+					}
+					else if (hitOrStay_selection == 2) {
+						dealer.dealerPlay();
+						cout << dealer.dealerDeck_toString() << dealer.dealerScore_toString();
+						break;
+					}
+				}
+				else {
+					break;
+				}
 			}
-			else if (hitOrStay_selection == 2) {
-				cout << dealer.dealerDeck_toString() << dealer.dealerScore();
-				dealer.dealerPlay();
-				cout << dealer.dealerDeck_toString() << dealer.dealerScore();
+			cout << "Play again? (yes or no) ";
+			cin >> playAgain;
+			if (playAgain == "no") {
 				break;
 			}
+			cout << endl << "***** New Game *****" << endl;
 		}
 	}
 	else {

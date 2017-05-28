@@ -62,10 +62,16 @@ string Dealer::playerDeck_toString() {
 }
 
 // Returns the player's total score
-string Dealer::playerScore() {
-	string playerScore_toString;
-	int playerScore = player.getScore();
-	return playerScore_toString = "Total score: " + to_string(playerScore) + "\n";
+int Dealer::playerScore() {
+	return player.getScore();
+}
+
+string Dealer::playerScore_toString() {
+	string playerScoreString;
+	if (playerScore() > 21) {
+		return playerScoreString = "Bust!\n";
+	}
+	return playerScoreString = "Player score: " + to_string(playerScore()) + "\n";
 }
 
 string Dealer::dealerDeck_toString() {
@@ -77,7 +83,6 @@ string Dealer::dealerDeck_toString() {
 	return dealerCards;
 }
 
-// 
 int Dealer::dealerScore() {
   int dealerScore = 0;
   for (int i = 0; i < dealerHand.size(); i++) {
@@ -88,7 +93,11 @@ int Dealer::dealerScore() {
 
 string Dealer::dealerScore_toString() {
 	string dealerScoreString;
-	return dealerScoreString = 
+	if (dealerScore() > 21) {
+		return dealerScoreString = "Dealer busts!\n";
+	}
+	return dealerScoreString = "Dealer score: " + to_string(dealerScore()) + "\n";
+}
 
 // Checks if the dealer's score is less than 17, 
 int Dealer::dealerPlay() {
