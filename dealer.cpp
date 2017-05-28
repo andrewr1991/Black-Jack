@@ -56,26 +56,52 @@ void Dealer::createPlayer() {
   Player _player = player;
 }
 
+// Returns the player's deck of cards as a string
 string Dealer::playerDeck_toString() {
-  return player.playerDeck();
+  return "\n" + player.playerDeck();
 }
 
 // Returns the player's total score
-int playerScore() {
-	return player.getScore();
+string Dealer::playerScore() {
+	string playerScore_toString;
+	int playerScore = player.getScore();
+	return playerScore_toString = "Total score: " + to_string(playerScore) + "\n";
 }
 
-int dealerScore() {
-  int score = 0;
-  for (int i = 0; i < playerHand.size(); i++) {
-    score += dealerHand[i].getRank();
-  }
+string Dealer::dealerDeck_toString() {
+	string dealerCards = "\nDealer hand\n";
+		for (int i = 0; i < dealerHand.size(); i++) {
+			dealerCards += to_string(dealerHand[i].getRank()) + " ";
+		}
+	dealerCards += "\n\n";
+	return dealerCards;
+}
 
+// 
+int Dealer::dealerScore() {
+  int dealerScore = 0;
+  for (int i = 0; i < dealerHand.size(); i++) {
+    dealerScore += dealerHand[i].getRank();
+  }
+  return dealerScore;
+}
+
+string Dealer::dealerScore_toString() {
+	string dealerScoreString;
+	return dealerScoreString = 
+
+// Checks if the dealer's score is less than 17, 
 int Dealer::dealerPlay() {
 	
-	
-	
-	
+	while (true) {
+		if (dealerScore() < 17) {
+			hitDealer();
+		}
+		else {
+			break;
+		}
+	}
+}
 	
 	
 	

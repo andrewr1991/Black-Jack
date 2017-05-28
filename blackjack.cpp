@@ -17,14 +17,18 @@ int main() {
 		dealer.shuffleDeck();
 		dealer.deal();
 		while (true) {
-			cout << dealer.playerDeck_toString();
+			cout << dealer.playerDeck_toString() << dealer.playerScore();
+			
 			cout << view.hitOrStay_toString();
 			cin >> hitOrStay_selection;
 
 			if (hitOrStay_selection == 1) {
 				dealer.hitPlayer();
 			}
-			else {
+			else if (hitOrStay_selection == 2) {
+				cout << dealer.dealerDeck_toString() << dealer.dealerScore();
+				dealer.dealerPlay();
+				cout << dealer.dealerDeck_toString() << dealer.dealerScore();
 				break;
 			}
 		}
