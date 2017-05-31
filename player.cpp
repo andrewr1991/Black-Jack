@@ -25,6 +25,6 @@ string Player::playerDeck() {
 	return playerCards;
 }
 
-Card Player::getCard(int index) {
+Card& Player::getCard(int index) {
 	return playerHand[index];
 }

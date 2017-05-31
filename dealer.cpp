@@ -48,7 +48,7 @@ void Dealer::deal() {
 		  cin >> oneOrEleven;
 		  
 		  if (oneOrEleven == 11) {
-			  Card temp = player.getCard(i).changeRank(9);
+			  player.getCard(i).changeRank(11);
 			  cout << "The ace will have a value of 11" << endl;
 		  }
 		  else {
