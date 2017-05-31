@@ -16,3 +16,7 @@ string Card::suitToString() {
       return "Spade";
   }
 }
+
+void Card::changeRank(int change) {
+	rank = change;
+}

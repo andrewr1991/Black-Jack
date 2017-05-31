@@ -24,3 +24,7 @@ string Player::playerDeck() {
 	playerCards += "\n\n";
 	return playerCards;
 }
+
+Card Player::getCard(int index) {
+	return playerHand[index];
+}

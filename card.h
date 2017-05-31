@@ -3,6 +3,7 @@
 #ifndef CARD_H
 #define CARD_H 2017
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ class Card {
     Card (int _rank, Suits _suit) : rank{_rank}, suit{_suit} {}
     string suitToString();
     int getRank();
+    void changeRank(int change);
 
   private:
     int rank;

@@ -36,6 +36,26 @@ void Dealer::deal() {
     hitDealer();
 	hitPlayer();
   }
+  
+  // Print the player's deck of cards
+  cout << "\n" + player.playerDeck();
+  
+  // Loop through the initial 2-card deck to look for aces and prompt the user for what they want to do with them
+  for (int i = 0; i < 2; i++) {
+	  if (player.getCard(i).getRank() == 1) {
+		  int oneOrEleven;
+		  cout << "Would you like the ace to be a 1 or an 11? "; 
+		  cin >> oneOrEleven;
+		  
+		  if (oneOrEleven == 11) {
+			  Card temp = player.getCard(i).changeRank(9);
+			  cout << "The ace will have a value of 11" << endl;
+		  }
+		  else {
+			  cout << "The ace will have a value of 1" << endl;
+		  }
+	  }
+  }
 }
 
 // Pushes a card from the back of the shuffled deck into the player's hand then deletes that same card from the main deck 

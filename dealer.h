@@ -1,3 +1,7 @@
+/*
+ * Dealer will act as the controller
+ */
+
 #ifndef DEALER_H
 #define DEALER_H 2017
 #include <iostream>

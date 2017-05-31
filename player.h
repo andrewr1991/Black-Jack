@@ -16,5 +16,6 @@ class Player {
     void hit(Card card);
     int getScore();
     string playerDeck();
+    Card getCard(int index);
 };
 #endif

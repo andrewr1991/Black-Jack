@@ -19,7 +19,6 @@ int main() {
 			dealer.shuffleDeck();
 			dealer.deal();
 			while (true) {
-				cout << dealer.playerDeck_toString() << dealer.playerScore_toString();
 				if (dealer.playerScore() < 21) {
 					cout << view.hitOrStay_toString();
 					cin >> hitOrStay_selection;
@@ -36,6 +35,8 @@ int main() {
 				else {
 					break;
 				}
+				// Print the users deck
+				cout << dealer.playerDeck_toString() << dealer.playerScore_toString();				
 			}
 			cout << "Play again? (yes or no) ";
 			cin >> playAgain;
