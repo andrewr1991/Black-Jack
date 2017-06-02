@@ -56,6 +56,13 @@ void Dealer::deal() {
 		  }
 	  }
   }
+  if (player.getCard(0).getRank() == player.getCard(1).getRank()) {
+	  int splitSelection;
+	  cout << "Would you like to split? (yes or no) ";
+	  cin >> splitSelection;
+	  
+	  if (splitSelection == yes) {
+		  
 }
 
 // Pushes a card from the back of the shuffled deck into the player's hand then deletes that same card from the main deck 
@@ -74,6 +81,10 @@ void Dealer::hitDealer() {
 // Creates a Player object
 void Dealer::createPlayer() {
   Player _player = player;
+}
+
+void Dealer::createView() {
+	View _view = view;
 }
 
 // Returns the player's deck of cards as a string
@@ -121,7 +132,6 @@ string Dealer::dealerScore_toString() {
 
 // Checks if the dealer's score is less than 17, 
 int Dealer::dealerPlay() {
-	
 	while (true) {
 		if (dealerScore() < 17) {
 			hitDealer();
@@ -129,6 +139,30 @@ int Dealer::dealerPlay() {
 		else {
 			break;
 		}
+	}
+}
+
+void Dealer::playerPlay() {
+	while (true) {
+		if (playerScore() < 22 && playerScore() != 21 && player.getCard(0).getRank() != player.getCard(1).getRank()){
+			int hitOrStay_selection;
+			cout << view.hitOrStay_toString();
+			cin >> hitOrStay_selection;
+
+			if (hitOrStay_selection == 1) {
+				hitPlayer();
+			}
+			else if (hitOrStay_selection == 2) {
+				dealerPlay();
+				cout << dealerDeck_toString() << dealerScore_toString();
+				break;
+			}
+		}
+		else {
+			break;
+		}
+	// Print the users deck
+	cout << playerDeck_toString() << playerScore_toString();				
 	}
 }
 	

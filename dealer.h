@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include "card.h"
 #include "player.h"
+#include "view.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class Dealer {
     void hitPlayer();
     void hitDealer();
     void createPlayer();
+    void createView();
     void deal();
     int dealerPlay();
     int dealerScore();
@@ -28,10 +30,13 @@ class Dealer {
     string playerScore_toString();
     string dealerDeck_toString();
     string dealerScore_toString();
+    void playerPlay();
 
   private:
     Player player;
+    View view;
     vector<Card> deck;
     vector<Card> dealerHand;
+    bool split = false;
 };
 #endif

@@ -10,6 +10,8 @@ using namespace std;
 class Player {
   private:
     vector<Card> playerHand;
+    vector<Card> playerHandSplit1;
+    vector<Card> playerHandSplit2;
 
   public:
     void initializeHand(Card card);
