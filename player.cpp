@@ -28,3 +28,8 @@ string Player::playerDeck() {
 Card& Player::getCard(int index) {
 	return playerHand[index];
 }
+
+void moveSplitCards() {
+	playerHandSplit1[0] = playerHand[0];
+	playerHandSplit2[0] = playerHand[1];
+}

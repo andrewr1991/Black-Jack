@@ -19,5 +19,6 @@ class Player {
     int getScore();
     string playerDeck();
     Card& getCard(int index);
+    void moveSplitCards();
 };
 #endif
