@@ -30,6 +30,23 @@ string Player::playerDeck() {
 	return playerCards;
 }
 
+string Player::playerSplitDeck() {
+	string playerCardsSplit1 = "Player hand deck 1: "; string playerCardsSplit2 = "Player hand deck 2: ";
+	
+	for (int i = 0; i < playerHandSplit1.size(); i++) {
+		playerCardsSplit1 += to_string(playerHandSplit1[i].getRank()) + " ";
+	}
+	
+	for (int i = 0; i < playerHandSplit2.size(); i++) {
+		playerCardsSplit2 += to_string(playerHandSplit2[i].getRank()) + " ";
+	}
+	
+	playerCardsSplit1 += " ";
+	
+	return playerCardsSplit1 + playerCardsSplit1;
+}
+	
+
 Card& Player::getCard(int index) {
 	return playerHand[index];
 }

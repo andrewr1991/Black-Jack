@@ -18,6 +18,7 @@ class Player {
     void hit(Card card);
     int getScore();
     string playerDeck();
+    string playerSplitDeck();
     Card& getCard(int index);
     void splitCards();
     void hitSplitHands(Card card1, Card card2);
