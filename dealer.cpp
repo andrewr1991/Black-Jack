@@ -57,19 +57,31 @@ void Dealer::deal() {
 	  }
   }
   if (player.getCard(0).getRank() == player.getCard(1).getRank()) {
-	  int splitSelection;
+	  string splitSelection;
 	  cout << "Would you like to split? (yes or no) ";
 	  cin >> splitSelection;
 	  
-	  if (splitSelection == yes) {
-		  
+	  if (splitSelection == "yes") {
+		  player.splitCards();
+		  split = true;
+	  }
+  }
 }
 
 // Pushes a card from the back of the shuffled deck into the player's hand then deletes that same card from the main deck 
 void Dealer::hitPlayer() {
-  Card temp = deck.back();
-  deck.pop_back();
-  player.hit(temp);
+	if (split == false) {
+		Card temp = deck.back();
+		deck.pop_back();
+		player.hit(temp);
+	}
+	else if (split == true) {
+		Card temp1 = deck.back();
+		deck.pop_back();
+		Card temp2 = deck.back();
+		deck.pop_back();
+		player.hitSplitHands(temp1, temp2);
+	}
 }
 
 // Pushes a card from the back of the shuffled deck into the dealer's hand then deletes that same card from the main deck
