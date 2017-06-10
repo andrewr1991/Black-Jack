@@ -61,7 +61,7 @@ string Player::playerSplitDeck() {
 	
 	playerCardsSplit1 += " ";
 	
-	return playerCardsSplit1 + playerCardsSplit1;
+	return playerCardsSplit1 + playerCardsSplit2;
 }
 	
 
@@ -70,6 +70,6 @@ Card& Player::getCard(int index) {
 }
 
 void Player::splitCards() {
-	playerHandSplit1[0] = playerHand[0];
-	playerHandSplit2[0] = playerHand[1];
+	playerHandSplit1.push_back(playerHand[0]);
+	playerHandSplit2.push_back(playerHand[1]);
 }

@@ -183,11 +183,14 @@ void Dealer::playerPlay() {
 				break;
 			}
 		}
+		else if ((playerScore(1) < 22 || playerScore(2) < 22 || playerScore(1) != 21 || playerScore(2) != 21) && split == true) {
+			int test;
+			cout << playerSplitDeck_toString() << endl;
+			cin >> test;
+		}
 		else {
 			break;
-		}
-	// Print the users deck
-	cout << playerDeck_toString() << playerScore_toString();				
+		}				
 	}
 }
 	
