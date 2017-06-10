@@ -32,11 +32,12 @@ void Dealer::shuffleDeck() {
 
 // Deal each the dealer and player two cards
 void Dealer::deal() {
+	hitPlayer();
   for (int i = 0; i < 2; i++) {
     hitDealer();
-	hitPlayer();
+	
   }
-  
+
   // Print the player's deck of cards
   cout << "\n" + player.playerDeck();
   
@@ -56,6 +57,7 @@ void Dealer::deal() {
 		  }
 	  }
   }
+
   if (player.getCard(0).getRank() == player.getCard(1).getRank()) {
 	  string splitSelection;
 	  cout << "Would you like to split? (yes or no) ";
@@ -70,9 +72,13 @@ void Dealer::deal() {
 
 // Pushes a card from the back of the shuffled deck into the player's hand then deletes that same card from the main deck 
 void Dealer::hitPlayer() {
+
 	if (split == false) {
 		Card temp = deck.back();
 		deck.pop_back();
+		player.hit(temp);
+		
+		temp = deck[9];
 		player.hit(temp);
 	}
 	else if (split == true) {
@@ -99,22 +105,27 @@ void Dealer::createView() {
 	View _view = view;
 }
 
-// Returns the player's deck of cards as a string
+// Returns the player's hand as a string
 string Dealer::playerDeck_toString() {
   return "\n" + player.playerDeck();
 }
 
+// If the player has split, this method returns the player's hand
+string Dealer::playerSplitDeck_toString() {
+	return "\n" + player.playerSplitDeck();
+}
+
 // Returns the player's total score
-int Dealer::playerScore() {
-	return player.getScore();
+int Dealer::playerScore(int vector) {
+	return player.getScore(vector);
 }
 
 string Dealer::playerScore_toString() {
 	string playerScoreString;
-	if (playerScore() > 21) {
+	if (playerScore(0) > 21) {
 		return playerScoreString = "Bust!\n";
 	}
-	return playerScoreString = "Player score: " + to_string(playerScore()) + "\n";
+	return playerScoreString = "Player score: " + to_string(playerScore(0)) + "\n";
 }
 
 string Dealer::dealerDeck_toString() {
@@ -155,8 +166,10 @@ int Dealer::dealerPlay() {
 }
 
 void Dealer::playerPlay() {
+	
+	split = true;
 	while (true) {
-		if (playerScore() < 22 && playerScore() != 21 && player.getCard(0).getRank() != player.getCard(1).getRank()){
+		if (playerScore(0) < 22 && playerScore(0) != 21 && !split){
 			int hitOrStay_selection;
 			cout << view.hitOrStay_toString();
 			cin >> hitOrStay_selection;

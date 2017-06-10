@@ -16,7 +16,7 @@ class Player {
   public:
     void initializeHand(Card card);
     void hit(Card card);
-    int getScore();
+    int getScore(int vector);
     string playerDeck();
     string playerSplitDeck();
     Card& getCard(int index);

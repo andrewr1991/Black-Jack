@@ -13,12 +13,30 @@ void Player::hitSplitHands(Card card1, Card card2) {
 	playerHandSplit2.push_back(card2);
 }
 
-int Player::getScore() {
+int Player::getScore(int vector) {
   int score = 0;
-  for (int i = 0; i < playerHand.size(); i++) {
-    score += playerHand[i].getRank();
+  
+  if (vector = 0) {
+	  for (int i = 0; i < playerHand.size(); i++) {
+		score += playerHand[i].getRank();
+	  }
+	  return score;
   }
-  return score;
+  else if (vector = 1) {
+	  for (int i = 0; i < playerHandSplit1.size(); i++) {
+		score += playerHandSplit1[i].getRank();
+	  }
+	  return score;
+  }
+  else if (vector = 2) {
+	  for (int i = 0; i < playerHandSplit2.size(); i++) {
+		score += playerHandSplit2[i].getRank();
+	  }
+	  return score;
+  }
+  else {
+	  cout << "Enter a valid input" << endl;
+  }
 }
 
 string Player::playerDeck() {

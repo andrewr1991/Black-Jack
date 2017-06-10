@@ -25,11 +25,12 @@ class Dealer {
     void deal();
     int dealerPlay();
     int dealerScore();
-    int playerScore();
+    int playerScore(int vector);
     string playerDeck_toString();
     string playerScore_toString();
     string dealerDeck_toString();
     string dealerScore_toString();
+    string playerSplitDeck_toString();
     void playerPlay();
 
   private:
