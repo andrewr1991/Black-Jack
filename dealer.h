@@ -18,7 +18,7 @@ class Dealer {
   public:
     void createDeck();
     void shuffleDeck();
-    void hitPlayer();
+    void hitPlayer(int vector);
     void hitDealer();
     void createPlayer();
     void createView();
@@ -26,11 +26,10 @@ class Dealer {
     int dealerPlay();
     int dealerScore();
     int playerScore(int vector);
-    string playerDeck_toString();
+    string playerDeck_toString(int vector);
     string playerScore_toString();
     string dealerDeck_toString();
     string dealerScore_toString();
-    string playerSplitDeck_toString();
     void playerPlay();
 
   private:

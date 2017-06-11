@@ -17,10 +17,9 @@ class Player {
     void initializeHand(Card card);
     void hit(Card card);
     int getScore(int vector);
-    string playerDeck();
-    string playerSplitDeck();
+    string playerDeck(int vector);
     Card& getCard(int index);
     void splitCards();
-    void hitSplitHands(Card card1, Card card2);
+    void hitSplitHands(int vector, Card card);
 };
 #endif

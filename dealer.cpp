@@ -32,14 +32,14 @@ void Dealer::shuffleDeck() {
 
 // Deal each the dealer and player two cards
 void Dealer::deal() {
-	hitPlayer();
+	hitPlayer(0);
   for (int i = 0; i < 2; i++) {
     hitDealer();
 	
   }
 
   // Print the player's deck of cards
-  cout << "\n" + player.playerDeck();
+  cout << "\n" + player.playerDeck(0);
   
   // Loop through the initial 2-card deck to look for aces and prompt the user for what they want to do with them
   for (int i = 0; i < 2; i++) {
@@ -71,7 +71,7 @@ void Dealer::deal() {
 }
 
 // Pushes a card from the back of the shuffled deck into the player's hand then deletes that same card from the main deck 
-void Dealer::hitPlayer() {
+void Dealer::hitPlayer(int vector) {
 
 	if (split == false) {
 		Card temp = deck.back();
@@ -81,12 +81,15 @@ void Dealer::hitPlayer() {
 		temp = deck[9];
 		player.hit(temp);
 	}
-	else if (split == true) {
-		Card temp1 = deck.back();
+	else if (split == true && vector == 1) {
+		Card temp = deck.back();
 		deck.pop_back();
-		Card temp2 = deck.back();
+		player.hitSplitHands(vector, temp);
+	}
+	else if (split == true && vector == 2) {
+		Card temp = deck.back();
 		deck.pop_back();
-		player.hitSplitHands(temp1, temp2);
+		player.hitSplitHands(vector, temp);
 	}
 }
 
@@ -106,13 +109,8 @@ void Dealer::createView() {
 }
 
 // Returns the player's hand as a string
-string Dealer::playerDeck_toString() {
-  return "\n" + player.playerDeck();
-}
-
-// If the player has split, this method returns the player's hand
-string Dealer::playerSplitDeck_toString() {
-	return "\n" + player.playerSplitDeck();
+string Dealer::playerDeck_toString(int vector) {
+  return "\n" + player.playerDeck(vector);
 }
 
 // Returns the player's total score
@@ -153,7 +151,7 @@ string Dealer::dealerScore_toString() {
 	return dealerScoreString = "Dealer score: " + to_string(dealerScore()) + "\n";
 }
 
-// Checks if the dealer's score is less than 17, 
+// Checks if the dealer's score is less than 17, if so hit, if not stay 
 int Dealer::dealerPlay() {
 	while (true) {
 		if (dealerScore() < 17) {
@@ -168,29 +166,35 @@ int Dealer::dealerPlay() {
 void Dealer::playerPlay() {
 	
 	split = true;
-	while (true) {
-		if (playerScore(0) < 22 && playerScore(0) != 21 && !split){
-			int hitOrStay_selection;
-			cout << view.hitOrStay_toString();
-			cin >> hitOrStay_selection;
+	
+	while (playerScore(0) < 22 && playerScore(0) != 21 && !split) {
+		int hitOrStay_selection;
+		cout << view.hitOrStay_toString();
+		cin >> hitOrStay_selection;
 
+		if (hitOrStay_selection == 1) {
+			hitPlayer(0);
+		}
+		else if (hitOrStay_selection == 2) {
+			dealerPlay();
+			cout << dealerDeck_toString() << dealerScore_toString();
+		}
+	}
+	
+	while ((playerScore(1) < 22 || playerScore(2) < 22 || playerScore(1) != 21 || playerScore(2) != 21) && split == true) {
+		int hitOrStay_selection;
+		cout << playerDeck_toString(1) << " " << playerDeck_toString(2);
+		
+		while(true) {
+			cout << "\n1st hand:\n1. Hit\n2. Stay\n";
+			cin >> hitOrStay_selection;
+			
 			if (hitOrStay_selection == 1) {
-				hitPlayer();
-			}
-			else if (hitOrStay_selection == 2) {
-				dealerPlay();
-				cout << dealerDeck_toString() << dealerScore_toString();
-				break;
 			}
 		}
-		else if ((playerScore(1) < 22 || playerScore(2) < 22 || playerScore(1) != 21 || playerScore(2) != 21) && split == true) {
-			int test;
-			cout << playerSplitDeck_toString() << endl;
-			cin >> test;
-		}
-		else {
-			break;
-		}				
+				
+		
+		
 	}
 }
 	
