@@ -184,17 +184,13 @@ void Dealer::playerPlay() {
 	while ((playerScore(1) < 22 || playerScore(2) < 22 || playerScore(1) != 21 || playerScore(2) != 21) && split == true) {
 		int hitOrStay_selection;
 		cout << playerDeck_toString(1) << " " << playerDeck_toString(2);
+		cout << playerScore(1) << " " playerScore(2) << endl;
+		cout << "\n1st hand:\n1. Hit\n2. Stay\n";
+		cin >> hitOrStay_selection;
 		
-		while(true) {
-			cout << "\n1st hand:\n1. Hit\n2. Stay\n";
-			cin >> hitOrStay_selection;
-			
-			if (hitOrStay_selection == 1) {
-			}
+		if (hitOrStay_selection == 1) {
+			hitPlayer(1);
 		}
-				
-		
-		
 	}
 }
 	
