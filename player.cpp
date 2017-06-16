@@ -20,19 +20,19 @@ void Player::hitSplitHands(int vector, Card card) {
 int Player::getScore(int vector) {
   int score = 0;
   
-  if (vector = 0) {
+  if (vector == 0) {
 	  for (int i = 0; i < playerHand.size(); i++) {
 		score += playerHand[i].getRank();
 	  }
 	  return score;
   }
-  else if (vector = 1) {
+  else if (vector == 1) {
 	  for (int i = 0; i < playerHandSplit1.size(); i++) {
 		score += playerHandSplit1[i].getRank();
 	  }
 	  return score;
   }
-  else if (vector = 2) {
+  else if (vector == 2) {
 	  for (int i = 0; i < playerHandSplit2.size(); i++) {
 		score += playerHandSplit2[i].getRank();
 	  }

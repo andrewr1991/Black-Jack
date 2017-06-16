@@ -181,15 +181,50 @@ void Dealer::playerPlay() {
 		}
 	}
 	
-	while ((playerScore(1) < 22 || playerScore(2) < 22 || playerScore(1) != 21 || playerScore(2) != 21) && split == true) {
+	while (split) {
+		if (playerScore(1) > 21) {
+			cout << "***** Bust! *****" << endl;
+			break;
+		}
+		
 		int hitOrStay_selection;
-		cout << playerDeck_toString(1) << " " << playerDeck_toString(2);
-		cout << playerScore(1) << " " playerScore(2) << endl;
+		cout << playerDeck_toString(1) << endl;
+		cout << playerScore(1) << endl;
 		cout << "\n1st hand:\n1. Hit\n2. Stay\n";
+		
 		cin >> hitOrStay_selection;
 		
-		if (hitOrStay_selection == 1) {
+		if (hitOrStay_selection == 1 && playerScore(1) < 22) {
 			hitPlayer(1);
+		}
+		else if (hitOrStay_selection == 2) {
+			break;
+		}
+		else {
+			break;
+		}
+	}
+		
+	while (split) {
+		if (playerScore(2) > 21) {
+			cout << "***** Bust! *****" << endl;
+			break;
+		}
+		
+		int hitOrStay_selection;
+		cout << playerDeck_toString(2) << endl;
+		cout << playerScore(2) << endl;
+		cout << "\n2st hand:\n1. Hit\n2. Stay\n";
+		cin >> hitOrStay_selection;
+		
+		if (hitOrStay_selection == 1 && playerScore(2) < 22) {
+			hitPlayer(2);
+		}
+		else if (hitOrStay_selection == 2) {
+			break;
+		}
+		else {
+			break;
 		}
 	}
 }
