@@ -16,7 +16,7 @@ int main() {
 			Dealer dealer;
 			dealer.createPlayer();
 			dealer.createDeck();
-			//dealer.shuffleDeck();
+			dealer.shuffleDeck();
 			dealer.deal();
 			dealer.playerPlay();
 			

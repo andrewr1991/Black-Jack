@@ -1,3 +1,8 @@
+/*
+ * Change playerscore_toString() to show split scores as well
+ * Add end game socre testing to determine winner
+ */
+
 #include "dealer.h"
 
 using namespace std;
@@ -32,14 +37,10 @@ void Dealer::shuffleDeck() {
 
 // Deal each the dealer and player two cards
 void Dealer::deal() {
-	hitPlayer(0);
   for (int i = 0; i < 2; i++) {
+	hitPlayer(0);
     hitDealer();
-	
   }
-
-  // Print the player's deck of cards
-  cout << "\n" + player.playerDeck(0);
   
   // Loop through the initial 2-card deck to look for aces and prompt the user for what they want to do with them
   for (int i = 0; i < 2; i++) {
@@ -68,6 +69,18 @@ void Dealer::deal() {
 		  split = true;
 	  }
   }
+	// Show player decks
+	if (!split) {
+		cout << playerDeck_toString(0);
+		cout << playerScore_toString();
+	}
+	else if (split) {
+		cout << playerDeck_toString(1);
+		cout << playerScore(1) << endl;
+			
+		cout << playerDeck_toString(2);
+		cout << playerScore(2) << endl;
+	}
 }
 
 // Pushes a card from the back of the shuffled deck into the player's hand then deletes that same card from the main deck 
@@ -76,9 +89,6 @@ void Dealer::hitPlayer(int vector) {
 	if (split == false) {
 		Card temp = deck.back();
 		deck.pop_back();
-		player.hit(temp);
-		
-		temp = deck[9];
 		player.hit(temp);
 	}
 	else if (split == true && vector == 1) {
@@ -123,7 +133,12 @@ string Dealer::playerScore_toString() {
 	if (playerScore(0) > 21) {
 		return playerScoreString = "Bust!\n";
 	}
-	return playerScoreString = "Player score: " + to_string(playerScore(0)) + "\n";
+	else if (playerScore(0) == 21) {
+		return playerScoreString = "Blackjack! You win!";
+	}
+	else {
+		return playerScoreString = "Score: " + to_string(playerScore(0)) + "\n";
+	}
 }
 
 string Dealer::dealerDeck_toString() {
@@ -164,9 +179,6 @@ int Dealer::dealerPlay() {
 }
 
 void Dealer::playerPlay() {
-	
-	split = true;
-	
 	while (playerScore(0) < 22 && playerScore(0) != 21 && !split) {
 		int hitOrStay_selection;
 		cout << view.hitOrStay_toString();
@@ -176,20 +188,19 @@ void Dealer::playerPlay() {
 			hitPlayer(0);
 		}
 		else if (hitOrStay_selection == 2) {
-			dealerPlay();
-			cout << dealerDeck_toString() << dealerScore_toString();
+			break;
 		}
+		cout << playerDeck_toString(0);
+		cout << playerScore_toString();
 	}
 	
 	while (split) {
 		if (playerScore(1) > 21) {
-			cout << "***** Bust! *****" << endl;
+			cout << "***** Bust *****" << endl;
 			break;
 		}
 		
 		int hitOrStay_selection;
-		cout << playerDeck_toString(1) << endl;
-		cout << playerScore(1) << endl;
 		cout << "\n1st hand:\n1. Hit\n2. Stay\n";
 		
 		cin >> hitOrStay_selection;
@@ -203,17 +214,17 @@ void Dealer::playerPlay() {
 		else {
 			break;
 		}
+		cout << playerDeck_toString(1) << endl;
+		dealerScore_toString();
 	}
 		
 	while (split) {
 		if (playerScore(2) > 21) {
-			cout << "***** Bust! *****" << endl;
+			cout << "***** Bust *****" << endl;
 			break;
 		}
 		
 		int hitOrStay_selection;
-		cout << playerDeck_toString(2) << endl;
-		cout << playerScore(2) << endl;
 		cout << "\n2st hand:\n1. Hit\n2. Stay\n";
 		cin >> hitOrStay_selection;
 		
@@ -226,6 +237,14 @@ void Dealer::playerPlay() {
 		else {
 			break;
 		}
+		cout << playerDeck_toString(2) << endl;
+		cout << playerScore(2) << endl;
+	}
+	
+	// Dealer's turn
+	if (playerScore(0) != 21 || playerScore(1) != 21 || playerScore(2) != 21) {
+		dealerPlay();
+		cout << dealerDeck_toString() << dealerScore_toString();
 	}
 }
 	
