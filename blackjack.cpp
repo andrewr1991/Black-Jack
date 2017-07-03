@@ -19,6 +19,7 @@ int main() {
 			dealer.shuffleDeck();
 			dealer.deal();
 			dealer.playerPlay();
+			dealer.checkFinalScore();
 			
 			cout << "Play again? (yes or no) ";
 			cin >> playAgain;

@@ -1,6 +1,5 @@
 /*
  * Change playerscore_toString() to show split scores as well
- * Add end game socre testing to determine winner
  */
 
 #include "dealer.h"
@@ -245,6 +244,21 @@ void Dealer::playerPlay() {
 	if (playerScore(0) != 21 || playerScore(1) != 21 || playerScore(2) != 21) {
 		dealerPlay();
 		cout << dealerDeck_toString() << dealerScore_toString();
+	}
+}
+
+void Dealer::checkFinalScore() {
+	if (!split && playerScore(0) > dealerScore() && playerScore(0) < 21) {
+		cout << "You win!" << endl;
+	}
+	else if (split && ((playerScore(1) > dealerScore() && playerScore(1) < 21) || (playerScore(2) > dealerScore() && playerScore(2) < 21))) {
+		cout << "You win!" << endl;
+	}
+	else if (playerScore(0) == dealerScore()) {
+		cout << "It's a draw!" << endl;
+	}
+	else {
+		cout << "You lose!" << endl;
 	}
 }
 	

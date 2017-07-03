@@ -31,6 +31,7 @@ class Dealer {
     string dealerDeck_toString();
     string dealerScore_toString();
     void playerPlay();
+    void checkFinalScore();
 
   private:
     Player player;
